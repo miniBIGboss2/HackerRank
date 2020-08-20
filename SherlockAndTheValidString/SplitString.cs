@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SherlockAndTheValidString
 {
@@ -8,12 +9,9 @@ namespace SherlockAndTheValidString
         {
             Dictionary<char,int> dictionary = new Dictionary<char, int>();
             
-            foreach (char c in input)
+            foreach (var c in input.Where(c => !dictionary.TryAdd(c, 1)))
             {
-                if (!dictionary.TryAdd(c, 1))
-                {
-                    dictionary[c]++;
-                }
+                dictionary[c]++;
             }
             
             return dictionary;
