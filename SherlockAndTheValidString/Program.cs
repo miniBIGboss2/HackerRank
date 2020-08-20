@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace SherlockAndTheValidString
 {
@@ -7,10 +6,13 @@ namespace SherlockAndTheValidString
     {
         static void Main()
         {
-            Dictionary<char,int> dictionary = new Dictionary<char, int>();
-            string input = Console.ReadLine();
-            SplitString.Split(input, dictionary);
-            Console.WriteLine(ValidateString.IsValid(dictionary));
+            var input = Console.ReadLine();
+            
+            var dictionary = SplitString.Split(input);
+            
+            var answer = ValidateString.IsValid(dictionary);
+            
+            Console.WriteLine(answer);
         }
     }
 }
