@@ -1,23 +1,22 @@
-using System;
 using System.Collections.Generic;
 
 namespace SherlockAndTheValidString
 {
     public class SplitString
     {
-        public static void Split(string input, Dictionary<char, int> dictionary)
+        public static Dictionary<char, int> Split(string input)
         {
+            Dictionary<char,int> dictionary = new Dictionary<char, int>();
+            
             foreach (char c in input)
             {
-                try
-                {
-                    dictionary.Add(c, 1);
-                }
-                catch (ArgumentException)
+                if (!dictionary.TryAdd(c, 1))
                 {
                     dictionary[c]++;
                 }
             }
+            
+            return dictionary;
         }
     }
 }
