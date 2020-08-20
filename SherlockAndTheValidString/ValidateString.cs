@@ -22,30 +22,29 @@ namespace SherlockAndTheValidString
 
         private static bool SecondEvaluation(Dictionary<char,int> dictionary)
         {
-            var keyOfMaxValue = dictionary.Aggregate((x,y) => x.Value > y.Value ? x:y).Key;
-            dictionary[keyOfMaxValue]--;
+            var copyDictionary = new Dictionary<char, int>(dictionary);
+            
+            var keyOfMaxValue = copyDictionary.Aggregate((x,y) => x.Value > y.Value ? x:y).Key;
+            copyDictionary[keyOfMaxValue]--;
 
-            if (FirstEvaluation(dictionary))
-            {
-                dictionary[keyOfMaxValue]++;
-                return true;
-            }
-
-            dictionary[keyOfMaxValue]++;
-            return false;
+            var answer = FirstEvaluation(copyDictionary);
+            
+            return answer;
         }
 
         private static bool ThirdEvaluation(Dictionary<char, int> dictionary)
         {
-            var keyOfMinValue = dictionary.Aggregate((x, y) => x.Value > y.Value ? y:x).Key;
-            dictionary[keyOfMinValue]--;
+            var copyDictionary = new Dictionary<char, int>(dictionary);
+            
+            var keyOfMinValue = copyDictionary.Aggregate((x, y) => x.Value > y.Value ? y:x).Key;
+            copyDictionary[keyOfMinValue]--;
 
-            if (dictionary[keyOfMinValue] == 0)
+            if (copyDictionary[keyOfMinValue] == 0)
             {
-                dictionary.Remove(keyOfMinValue);
+                copyDictionary.Remove(keyOfMinValue);
             }
             
-            return FirstEvaluation(dictionary);
+            return FirstEvaluation(copyDictionary);
         }
     }
 }
