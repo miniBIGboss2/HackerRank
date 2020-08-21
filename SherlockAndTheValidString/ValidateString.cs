@@ -15,12 +15,12 @@ namespace SherlockAndTheValidString
             return "NO";
         }
 
-        private static bool FirstEvaluation(Dictionary<char,int> dictionary)
+        public static bool FirstEvaluation(Dictionary<char,int> dictionary)
         {
             return dictionary.Values.Distinct().Count() == 1;
         }
 
-        private static bool SecondEvaluation(Dictionary<char,int> dictionary)
+        public static bool SecondEvaluation(Dictionary<char,int> dictionary)
         {
             var copyDictionary = new Dictionary<char, int>(dictionary);
             
@@ -32,7 +32,7 @@ namespace SherlockAndTheValidString
             return answer;
         }
 
-        private static bool ThirdEvaluation(Dictionary<char, int> dictionary)
+        public static bool ThirdEvaluation(Dictionary<char, int> dictionary)
         {
             var copyDictionary = new Dictionary<char, int>(dictionary);
             
